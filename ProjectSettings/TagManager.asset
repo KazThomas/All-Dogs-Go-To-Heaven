@@ -8,6 +8,7 @@ TagManager:
   - Fear
   - Bed
   - Hiding Place
+  - Tile
   layers:
   - Default
   - TransparentFX
