@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7990749588574164198}
   - component: {fileID: 5753842827293716874}
+  - component: {fileID: 6498483955543349988}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Bed
@@ -84,3 +85,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6498483955543349988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9086486792890643581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96515efb525eb5b409141ff3793a5358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

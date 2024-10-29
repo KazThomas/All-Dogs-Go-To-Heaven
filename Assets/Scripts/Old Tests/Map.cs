@@ -38,6 +38,8 @@ public class Map
                     case TileTypes.EMPTY:
                         tile[y, x] = new GameObject();
                         break;
+                   /* case TileTypes.FEAR:
+                        tile[y, x] = */ 
                 }
             }
         }
