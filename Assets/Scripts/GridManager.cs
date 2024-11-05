@@ -5,7 +5,7 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     [SerializeField] private int width, height; //size of map
-    [SerializeField] private int maxAmount; //amount of fears/hiding places
+    [SerializeField] private int maxAmount = 2; //amount of fears/hiding places
     
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private Tile linePrefab;
@@ -51,25 +51,32 @@ public class GridManager : MonoBehaviour
         }
         cam.transform.position = new Vector3 ((float) width/2 - 0.5f, (float) height/2  - 1.5f, - 10);
 
-        int playerX = Random.Range(0, width);
-        int playerY = Random.Range(0, height);
-        int bedX = Random.Range(0, width);
-        int bedY = Random.Range(0, height);
+        PopulateGrid();
+        
+    }
+
+    private void PopulateGrid()
+    {
+        int playerX = Random.Range(0, width), bedX = Random.Range(0, width);
+        int playerY = Random.Range(0, height), bedY = Random.Range(0, height);
+
+        int hideX = Random.Range(0, width), fearX = Random.Range(0, width);
+        int hideY = Random.Range(0, height), fearY = Random.Range(0, height);
 
         //spawn the things that only need to be one ofs, singletons....
-        var dogTile = Instantiate(dogPrefab, new Vector3 (playerX - 0.1f, playerY), Quaternion.identity);
+        var dogTile = Instantiate(dogPrefab, new Vector3(playerX - 0.1f, playerY), Quaternion.identity);
         var bedTile = Instantiate(bedPrefab, new Vector3(bedX, bedY), Quaternion.identity);
 
-        int fearAmount = Random.Range(0, maxAmount);
-        int hideAmount = Random.Range(0, maxAmount);
+        int fearAmount = Random.Range(1, maxAmount); //minimum 1 of each type of non-dog/bed item
+        int hideAmount = Random.Range(1, maxAmount);
 
         for (int i = 0; i < fearAmount; i++)
         {
             for (int j = 0; j < hideAmount; j++)
             {
-                var hideTile = Instantiate(rugPrefab, new Vector3(hideAmount, j), Quaternion.identity);
+                var hideTile = Instantiate(rugPrefab, new Vector3(hideX, hideY), Quaternion.identity);
             }
-            var fearTile = Instantiate(hooverPrefab, new Vector3(i, fearAmount), Quaternion.identity);
+            var fearTile = Instantiate(hooverPrefab, new Vector3(fearX, fearY), Quaternion.identity);
         }
     }
 }
