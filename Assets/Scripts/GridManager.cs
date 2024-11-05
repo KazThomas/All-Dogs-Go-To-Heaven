@@ -16,8 +16,12 @@ public class GridManager : MonoBehaviour
 
     [SerializeField] private Transform cam;
 
+    public Collider2D[] col;
+    [SerializeField] private float radius;
+
     private void Awake()
     {
+        col = Physics2D.OverlapCircleAll(transform.position, radius);
         GenerateGrid();
     }
 
@@ -57,9 +61,11 @@ public class GridManager : MonoBehaviour
 
     private void PopulateGrid()
     {
+        //singletons
         int playerX = Random.Range(0, width), bedX = Random.Range(0, width);
         int playerY = Random.Range(0, height), bedY = Random.Range(0, height);
 
+        //potential multiples
         int hideX = Random.Range(0, width), fearX = Random.Range(0, width);
         int hideY = Random.Range(0, height), fearY = Random.Range(0, height);
 

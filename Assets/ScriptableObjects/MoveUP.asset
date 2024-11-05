@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6236619b1a4ca8e4cace5ba7ce29dc77, type: 3}
   m_Name: MoveUP
   m_EditorClassIdentifier: 
-  cardName: 
-  cardEffect: 
-  amount: 0
+  cardName: Move Up
+  cardEffect: Move Up x amount
+  amount: 1
+  image: {fileID: 21300000, guid: 57fb538e7f1b6dc4285583ac4b6fc439, type: 3}
