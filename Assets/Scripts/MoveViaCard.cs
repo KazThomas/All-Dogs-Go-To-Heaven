@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveViaCard : MonoBehaviour
+public class MoveViaCard : CardEffect
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void DoAction()
     {
-        
-    }
+        GameObject dog = GameObject.FindGameObjectWithTag("Dog");
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (dog != null)
+        {
+
+        }
     }
 }

@@ -15,6 +15,8 @@ public class Card : MonoBehaviour
     private GameObject dog;
     private bool hasBeenPlayed;
 
+    public int handIndex;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,8 @@ public class Card : MonoBehaviour
     {
         if (!hasBeenPlayed)
         {
+            transform.position += Vector3.up * 5 * Time.deltaTime; //highlights the card thats been played
+            hasBeenPlayed = true;
 
         }
     }

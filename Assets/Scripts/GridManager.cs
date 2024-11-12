@@ -29,7 +29,7 @@ public class GridManager : MonoBehaviour
     }
 
 
-    void GenerateGrid()
+   public void GenerateGrid()
     {
         for (int x = 0; x < width; x++)
         {
