@@ -413,6 +413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 641160361}
   - component: {fileID: 641160362}
+  - component: {fileID: 641160363}
   m_Layer: 0
   m_Name: Card moveLeft
   m_TagString: Untagged
@@ -487,6 +488,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &641160363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641160360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0671bcf1f4d6240b84ff4f97e586ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card: {fileID: 641160360}
+  scriptCard: {fileID: 11400000, guid: ba973d25d80751743941fae03aea000a, type: 2}
+  move: {fileID: 0}
+  cardName: Move Left
 --- !u!1 &704601833
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,6 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 704601834}
   - component: {fileID: 704601835}
+  - component: {fileID: 704601836}
   m_Layer: 0
   m_Name: Card moveRight
   m_TagString: Untagged
@@ -571,6 +589,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &704601836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704601833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0671bcf1f4d6240b84ff4f97e586ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card: {fileID: 704601833}
+  scriptCard: {fileID: 11400000, guid: 6142230d55bc8c644a5aebce03676dce, type: 2}
+  move: {fileID: 0}
+  cardName: Move Right
 --- !u!1 &802264334
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,6 +918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1238171531}
   - component: {fileID: 1238171532}
+  - component: {fileID: 1238171533}
   m_Layer: 0
   m_Name: Card moveDown
   m_TagString: Untagged
@@ -958,6 +993,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1238171533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238171530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0671bcf1f4d6240b84ff4f97e586ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card: {fileID: 1238171530}
+  scriptCard: {fileID: 11400000, guid: fa5cb1abd2ada704598423157316424b, type: 2}
+  move: {fileID: 0}
+  cardName: Move Down
 --- !u!1 &1327057653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,6 +1299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1796543455}
   - component: {fileID: 1796543456}
+  - component: {fileID: 1796543457}
   m_Layer: 0
   m_Name: Card moveUp
   m_TagString: Untagged
@@ -1322,6 +1374,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1796543457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796543454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0671bcf1f4d6240b84ff4f97e586ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card: {fileID: 1796543454}
+  scriptCard: {fileID: 11400000, guid: 14ddd9816f999e64faed28ea379627c4, type: 2}
+  move: {fileID: 0}
+  cardName: Move Up
 --- !u!1 &1849538624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,6 +1400,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1849538625}
   - component: {fileID: 1849538626}
+  - component: {fileID: 1849538628}
+  - component: {fileID: 1849538627}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1378,6 +1448,35 @@ MonoBehaviour:
   cam: {fileID: 519420032}
   col: []
   radius: 0
+--- !u!114 &1849538627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849538624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f5f9f0389f318408b2cd3e7a73c1ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1849538628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849538624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201022bf77279fa4f82615925a781d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cards:
+  - {fileID: 1796543457}
+  - {fileID: 1238171533}
+  - {fileID: 704601836}
+  - {fileID: 641160363}
 --- !u!1 &1972661352
 GameObject:
   m_ObjectHideFlags: 0

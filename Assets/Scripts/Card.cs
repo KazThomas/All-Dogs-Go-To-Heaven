@@ -7,18 +7,32 @@ public class Card : MonoBehaviour
     [SerializeField] private GameObject card;
 
     [SerializeField] private ScriptableObj_Card scriptCard;
+    [SerializeField] private MoveViaCard move;
 
-    int amount = 1;
+    [SerializeField] private string cardName;
+
+    private GameManager gm;
+    private GameObject dog;
+    private bool hasBeenPlayed;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = FindAnyObjectByType<GameManager>();
+        dog = GameObject.FindGameObjectWithTag("Dog");
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void CardPressed()
+    {
+        if (!hasBeenPlayed)
+        {
+
+        }
     }
 }

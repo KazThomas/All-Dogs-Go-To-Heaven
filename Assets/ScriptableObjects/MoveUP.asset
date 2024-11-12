@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Move Up
   cardEffect: Move Up x amount
-  amount: 1
+  amount: -1
   image: {fileID: 21300000, guid: 57fb538e7f1b6dc4285583ac4b6fc439, type: 3}
