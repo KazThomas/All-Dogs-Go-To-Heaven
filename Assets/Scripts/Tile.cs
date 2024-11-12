@@ -7,6 +7,9 @@ public class Tile : MonoBehaviour
     private GameObject dog;
     private Rigidbody2D rb;
 
+    private Collider2D col;
+    [SerializeField] LayerMask tileLayer;
+
     /* [SerializeField] private float moveSpeed = 5f;
     [SerializeField] Transform movePoint; */
     // Start is called before the first frame update
@@ -14,16 +17,17 @@ public class Tile : MonoBehaviour
     {
         dog = GameObject.FindWithTag("Dog");
         rb = dog.GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    /* bool MyCollisions()
     {
-        
-    }
-
-    private void FixedUpdate()
-    {
-
-    }
+        Collider2D[] hitCols = Physics2D.OverlapCircleAll(gameObject.transform.position, 1, tileLayer);
+        int i = 0;
+        while (i < hitCols.Length)
+        {
+            Debug.Log("Hit : " + hitCols[i].name + i);
+            i++;
+        }
+    } */
 }

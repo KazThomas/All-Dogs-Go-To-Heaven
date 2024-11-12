@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
@@ -18,12 +19,15 @@ public class GridManager : MonoBehaviour
 
     public Collider2D[] col;
     [SerializeField] private float radius;
+    
 
     private void Awake()
     {
-        col = Physics2D.OverlapCircleAll(transform.position, radius);
+       transform.position = new Vector3( width / 2, height / 2, 0 );
+        
         GenerateGrid();
     }
+
 
     void GenerateGrid()
     {
@@ -61,6 +65,7 @@ public class GridManager : MonoBehaviour
 
     private void PopulateGrid()
     {
+        //bool canSpawn = PreventOverlap(spawnPos);
         //singletons
         int playerX = Random.Range(0, width), bedX = Random.Range(0, width);
         int playerY = Random.Range(0, height), bedY = Random.Range(0, height);
@@ -68,6 +73,9 @@ public class GridManager : MonoBehaviour
         //potential multiples
         int hideX = Random.Range(0, width), fearX = Random.Range(0, width);
         int hideY = Random.Range(0, height), fearY = Random.Range(0, height);
+
+        int[] multiX = new int[width];
+        int[] multiY = new int[height];
 
         //spawn the things that only need to be one ofs, singletons....
         var dogTile = Instantiate(dogPrefab, new Vector3(playerX - 0.1f, playerY), Quaternion.identity);
@@ -84,5 +92,32 @@ public class GridManager : MonoBehaviour
             }
             var fearTile = Instantiate(hooverPrefab, new Vector3(fearX, fearY), Quaternion.identity);
         }
+    }
+
+    bool PreventOverlap(Vector3 spawnPos)
+    {
+        col = Physics2D.OverlapCircleAll(transform.position, radius);
+
+        for (int i = 0; i < col.Length; i++)
+        {
+            Vector3 center = col[i].bounds.center;
+            float width = col[i].bounds.extents.x;
+            float height = col[i].bounds.extents.y;
+
+            float leftExtent = center.x - width;
+            float rightExtent = center.x + width;
+            float topExtent = center.y - height;
+            float bottomExtent = center.y + height;
+
+            if (spawnPos.x >= leftExtent && spawnPos.x <= rightExtent)
+            {
+                if (spawnPos.y >= bottomExtent && spawnPos.y <= topExtent)
+                {
+                    return false;
+                }
+            }
+            
+        }
+        return true;
     }
 }
