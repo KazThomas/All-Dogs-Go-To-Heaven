@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    [SerializeField] private int width, height; //size of map
-    [SerializeField] private int maxAmount = 2; //amount of fears/hiding places
+    [SerializeField] private int width, height; //size of map - 5x5s
+    [SerializeField] private int maxAmount = 2; //2 reasonable amount to avoid 
     
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private Tile linePrefab;
@@ -71,11 +71,6 @@ public class GridManager : MonoBehaviour
         int playerY = Random.Range(0, height), bedY = Random.Range(0, height);
 
         //potential multiples
-        int hideX = Random.Range(0, width), fearX = Random.Range(0, width);
-        int hideY = Random.Range(0, height), fearY = Random.Range(0, height);
-
-        int[] multiX = new int[width];
-        int[] multiY = new int[height];
 
         //spawn the things that only need to be one ofs, singletons....
         var dogTile = Instantiate(dogPrefab, new Vector3(playerX - 0.1f, playerY), Quaternion.identity);
@@ -83,18 +78,22 @@ public class GridManager : MonoBehaviour
 
         int fearAmount = Random.Range(1, maxAmount); //minimum 1 of each type of non-dog/bed item
         int hideAmount = Random.Range(1, maxAmount);
+       
 
         for (int i = 0; i < fearAmount; i++)
         {
+            Vector3 randomFearPos = new Vector3(Random.Range(0, width), Random.Range(0, height), 0);
             for (int j = 0; j < hideAmount; j++)
             {
-                var hideTile = Instantiate(rugPrefab, new Vector3(hideX, hideY), Quaternion.identity);
+                Vector3 randomHidePos = new Vector3(Random.Range(0, width), Random.Range(0, height), 0);
+
+                var hideTile = Instantiate(rugPrefab, randomHidePos, Quaternion.identity);
             }
-            var fearTile = Instantiate(hooverPrefab, new Vector3(fearX, fearY), Quaternion.identity);
+            var fearTile = Instantiate(hooverPrefab, randomFearPos, Quaternion.identity);
         }
     }
 
-    bool PreventOverlap(Vector3 spawnPos)
+   /* bool PreventOverlap(Vector3 spawnPos)
     {
         col = Physics2D.OverlapCircleAll(transform.position, radius);
 
@@ -119,5 +118,5 @@ public class GridManager : MonoBehaviour
             
         }
         return true;
-    }
+    } */
 }
