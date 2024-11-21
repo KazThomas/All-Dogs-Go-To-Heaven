@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3962628337097975703}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.19000244, y: -2.1200256, z: 0.02626133}
+  m_LocalPosition: {x: 7.080017, y: -2.1200256, z: 0.02626133}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -101,4 +101,4 @@ MonoBehaviour:
   scriptCard: {fileID: 11400000, guid: ba973d25d80751743941fae03aea000a, type: 2}
   move: {fileID: 0}
   cardName: Move Left
-  handIndex: 1
+  handIndex: 3

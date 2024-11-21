@@ -66,19 +66,16 @@ public class GridManager : MonoBehaviour
     private void PopulateGrid()
     {
         //bool canSpawn = PreventOverlap(spawnPos);
-        //singletons
-        int playerX = Random.Range(0, width), bedX = Random.Range(0, width);
-        int playerY = Random.Range(0, height), bedY = Random.Range(0, height);
 
-        //potential multiples
+        //singletons
+        Vector3 dogPos = new Vector3 (Random.Range(0, width), Random.Range(0, height), 0);
+        Vector3 bedPos = new Vector3(Random.Range(0, width), Random.Range(0, height), 0);
 
         //spawn the things that only need to be one ofs, singletons....
-        var dogTile = Instantiate(dogPrefab, new Vector3(playerX - 0.1f, playerY), Quaternion.identity);
-        var bedTile = Instantiate(bedPrefab, new Vector3(bedX, bedY), Quaternion.identity);
+        var dogTile = Instantiate(dogPrefab, dogPos, Quaternion.identity);
+        var bedTile = Instantiate(bedPrefab, bedPos, Quaternion.identity);
 
-        int fearAmount = Random.Range(1, maxAmount); //minimum 1 of each type of non-dog/bed item
-        int hideAmount = Random.Range(1, maxAmount);
-       
+        int fearAmount = Random.Range(1, maxAmount), hideAmount = Random.Range(1, maxAmount); //minimum 1 of each type of non-dog/bed item
 
         for (int i = 0; i < fearAmount; i++)
         {
