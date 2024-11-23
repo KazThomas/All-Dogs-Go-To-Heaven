@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
         discardText.SetText(discardCount.ToString());
     }
 
+    private void Start()
+    {
+        DrawCard();
+    }
+
     public void DrawCard()
     {
         //int duplicates = 2;
@@ -36,6 +41,7 @@ public class GameManager : MonoBehaviour
             {
                 if (avilableSlots[i])
                 {
+                    randCard.gameObject.SetActive(true);
                     randCard.handIndex = i; //if i = 0 card placement is 0
                     randCard.transform.position = cardSlots[i].position;
                     avilableSlots[i] = false; //because a card is now in that position so move onto the next avilable slot
