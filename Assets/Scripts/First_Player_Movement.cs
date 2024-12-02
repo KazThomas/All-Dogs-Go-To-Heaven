@@ -37,7 +37,7 @@ public class First_Player_Movement : MonoBehaviour
         }
     }
 
-    private void Move(Vector3 direction)
+    public void Move(Vector3 direction)
     {
         Vector3 newPos = movePoint.position + direction;
         if (!Physics2D.OverlapCircle(newPos, 0.2f, walls))

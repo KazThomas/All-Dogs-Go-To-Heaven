@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    [SerializeField] private int width, height; //size of map - 5x5s
+    [SerializeField] private int width, height; //size of map - 5x5
     [SerializeField] private int maxAmount = 2; //2 reasonable amount to avoid 
     
     [SerializeField] private Tile tilePrefab;
@@ -17,13 +17,13 @@ public class GridManager : MonoBehaviour
 
     [SerializeField] private Transform cam;
 
-    public Collider2D[] col;
+    public Collider2D[] col; //overlapping spawn fixes?
     [SerializeField] private float radius;
     
 
     private void Awake()
     {
-       transform.position = new Vector3( width / 2, height / 2, 0 );
+       transform.position = new Vector3( width / 2, height / 2, 0 ); //snaps camera to the middle of the grid
         
         GenerateGrid();
     }
@@ -36,7 +36,7 @@ public class GridManager : MonoBehaviour
             for (int y = 0; y < height; y++)
             {
                 
-                var flip = transform.rotation.eulerAngles;
+                var flip = transform.rotation.eulerAngles; //some lines need to be veritcal/horizontal 
                 flip.z -= 90;
                 if (x == width - 1 && y < height)
                 {

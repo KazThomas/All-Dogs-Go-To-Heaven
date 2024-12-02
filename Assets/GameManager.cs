@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private List<Card> deck = new List<Card>();
-    [SerializeField] private List<Card> discard = new List<Card>();
+    public List<Card> discard = new List<Card>();
     [SerializeField] private Transform[] cardSlots;
     [SerializeField] private Transform deckLocation;
     [SerializeField] private Transform discardLocation;
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         {
             Card randCard = deck[Random.Range(0, deck.Count)]; //randomly gives the player a card that is still in the deck
 
-            Debug.Log(randCard);
+            //Debug.Log(randCard); what card is being drawn
 
             for (int i = 0; i < avilableSlots.Length; i++)
             {
