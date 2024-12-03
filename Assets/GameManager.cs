@@ -15,20 +15,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI deckText;
     [SerializeField] private TextMeshProUGUI discardText;
 
-    private void Update()
-    {
-        int deckCount = deck.Count;
-        int discardCount = discard.Count;
-        deckText.SetText(deckCount.ToString());
-        discardText.SetText(discardCount.ToString());
-    }
-
     private void Start()
     {
-        DrawCard();
+        //DrawCard();
+    }
+    private void Update()
+    {
+        deckText.SetText(deck.Count.ToString());
+        discardText.SetText(discard.Count.ToString());
     }
 
-    public void DrawCard()
+    public void DrawCard() //currently drawing from the MoveSystem 
     {
         //int duplicates = 2;
         if (deck.Count >= 1) //if deck is not empty

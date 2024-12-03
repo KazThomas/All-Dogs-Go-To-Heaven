@@ -4,17 +4,14 @@ using UnityEngine;
 
 public abstract class CardEffect : ScriptableObj_Card
 {
-    [SerializeField] private int moveAmount;
-    [SerializeField] private string cardText;
-
     public string GetCardText()
     {
-        return cardText;
+        return cardName;
     }
 
     public int GetMoveAmount()
     {
-        return moveAmount;
+        return amount;
     }
 
     public abstract void DoAction();

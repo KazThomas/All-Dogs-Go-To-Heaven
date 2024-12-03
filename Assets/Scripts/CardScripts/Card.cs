@@ -8,7 +8,7 @@ public class Card : MonoBehaviour
 
     [SerializeField] private ScriptableObj_Card scriptCard;
     [SerializeField] private MoveViaCard move;
-    public string cardName;
+    [SerializeField] private string cardName;
 
     private GameManager gm;
     private GameObject dog;

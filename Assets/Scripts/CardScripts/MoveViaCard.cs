@@ -7,28 +7,38 @@ public class MoveViaCard : CardEffect
 {
     public override void DoAction()
     {
+        name = cardName;
         GameObject dog = GameObject.FindGameObjectWithTag("Dog");
-        
+        GameObject movePoint = GameObject.FindGameObjectWithTag("Point");
+        LayerMask walls = LayerMask.GetMask("Wall");
+
+        int move = dog.GetComponent<DogMovement>().GetMovement();
+
+        Vector3 direction;
+
         if (dog != null)
         {
-            Vector3 up = new Vector3(0f, -1, 0f);
-            
-            Vector2 right = new Vector3(0f, 1, 0f);
-            switch (cardName)
+            First_Player_Movement dogmove = new First_Player_Movement();
+
+            switch (name)
             {
-                case "Move Up":
-                    dog.GetComponent<DogMovement>().SetPos(up);
-                    break;
                 case "Move Down":
-                    dog.GetComponent<DogMovement>().SetPos(-up);//can just reverse the up doesnt need a new vector 3 
+                    direction = new Vector3(0, 1, 0); //need to replace the numbers with move but idk hows
+                    break;
+                case "Move Up":
+                    direction = new Vector3(0, -1, 0);
                     break;
                 case "Move Right":
-                    dog.GetComponent<DogMovement>().SetPos(right);
+                    direction = new Vector3(1, 0, 0);
                     break;
                 case "Move Left":
-                    dog.GetComponent <DogMovement>().SetPos(-right);
+                    direction = new Vector3(-1, 0, 0);
+                    break;
+                default:
+                    direction = Vector3.zero;
                     break;
             }
+            dogmove.Move(direction);
         }
     }
 }

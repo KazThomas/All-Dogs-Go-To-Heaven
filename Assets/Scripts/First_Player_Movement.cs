@@ -13,21 +13,15 @@ public class First_Player_Movement : MonoBehaviour
         movePoint.parent = null; //no parent
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime); //dog is always moving towards the position of the movepoint 
 
         if (Vector3.Distance(transform.position, movePoint.position) <= .05f )
         {
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1) //always convert to a positive number
             {
-               Move(new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f));
+               Move(new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f)); //move point is being moved by the inputs
             }
 
             else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1) //always convert to a positive number

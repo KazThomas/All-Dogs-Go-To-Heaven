@@ -12,14 +12,24 @@ public class MoveSystem : MonoBehaviour
     [SerializeField] private GameManager gm;
 
     private bool isFound = false;
+    private bool inBed = false;
+    private GameObject dog;
+    private GameObject bed;
+    private float dist;
     // Start is called before the first frame update
     void Start()
     {
         state = LevelState.START;
+        dog = GameObject.FindGameObjectWithTag("Dog");
+        bed = GameObject.FindGameObjectWithTag("Bed");
         StartCoroutine(PlayerTurn());
     }
 
-     IEnumerator Wipe()
+    private void Update()
+    {
+        dist = Vector3.Distance(dog.transform.position, bed.transform.position);
+    }
+    IEnumerator Wipe()
     {
         grid.GenerateGrid();
 
@@ -30,12 +40,18 @@ public class MoveSystem : MonoBehaviour
 
     IEnumerator PlayerTurn()
     {
+       
         int handSize = 4;
         for (int i = 0; i < handSize; i++)
         {
             gm.DrawCard();
         }
         yield return new WaitForSeconds(1f);
+        if (dist <= 0.5f) 
+        {
+            state = LevelState.WON;
+            StartCoroutine(EndScreen());
+        }
         state = LevelState.FEARTURN;
         StartCoroutine(FearTurn());
     }

@@ -9,6 +9,7 @@ TagManager:
   - Bed
   - Hiding Place
   - Tile
+  - Point
   layers:
   - Default
   - TransparentFX

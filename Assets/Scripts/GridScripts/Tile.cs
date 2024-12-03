@@ -10,6 +10,11 @@ public class Tile : MonoBehaviour
     private Collider2D col;
     [SerializeField] LayerMask tileLayer;
 
+
+
+    //NOT BEING USED
+
+
     /* [SerializeField] private float moveSpeed = 5f;
     [SerializeField] Transform movePoint; */
     // Start is called before the first frame update
