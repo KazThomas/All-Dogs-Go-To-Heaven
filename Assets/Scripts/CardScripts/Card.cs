@@ -6,7 +6,7 @@ public class Card : MonoBehaviour
 {
     [SerializeField] private GameObject card;
 
-    [SerializeField] private ScriptableObj_Card scriptCard;
+    
     [SerializeField] private MoveViaCard move;
     [SerializeField] private string cardName;
 
@@ -31,7 +31,7 @@ public class Card : MonoBehaviour
             hasBeenPlayed = true;
             move.DoAction();
             gm.avilableSlots[handIndex] = true; //reopens the hand for a new card
-            Invoke("Discard", 2f);
+            Invoke("Discard", 0.1f);
         }
     }
 
@@ -45,8 +45,23 @@ public class Card : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log(cardName);
+            DetectRay();
+        }
+    }
+
+    void DetectRay()
+    {
+        GameObject card = GameObject.FindGameObjectWithTag("Card");
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        if (hit.collider == card)
+        {
+            Debug.Log("Hit On Card");
             CardPressed();
         }
+    }
+
+    private void FixedUpdate()
+    {
+        //DetectRay();
     }
 }

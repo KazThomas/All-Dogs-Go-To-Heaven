@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CardEffect : ScriptableObj_Card
+[CreateAssetMenu(fileName = "Move", menuName = "ScriptableObjects/Move", order = 0)]
+public abstract class CardEffect : ScriptableObject
 {
+    [SerializeField] private string cardName;
+    [SerializeField] private int amount;
     public string GetCardText()
     {
         return cardName;

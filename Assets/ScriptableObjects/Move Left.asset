@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6236619b1a4ca8e4cace5ba7ce29dc77, type: 3}
-  m_Name: MoveUP
+  m_Script: {fileID: 11500000, guid: 86a44d85b86f5514ab39f7a3d51346b2, type: 3}
+  m_Name: Move Left
   m_EditorClassIdentifier: 
-  cardName: Move Up
-  cardEffect: Move Up x amount
+  cardName: Move Left
   amount: -1
-  image: {fileID: 21300000, guid: 57fb538e7f1b6dc4285583ac4b6fc439, type: 3}

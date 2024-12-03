@@ -16,12 +16,13 @@ public class MoveSystem : MonoBehaviour
     private GameObject dog;
     private GameObject bed;
     private Tile fear;
-    private List<Tile> fearList;
+    private List<Tile> fearList; // = new List<Tile>();
     private float winDist;
     // Start is called before the first frame update
     void Start()
     {
         state = LevelState.START;
+        grid = GetComponent<GridManager>();
         dog = GameObject.FindGameObjectWithTag("Dog");
         bed = GameObject.FindGameObjectWithTag("Bed");
         StartCoroutine(PlayerTurn());

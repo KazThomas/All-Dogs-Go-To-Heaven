@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Move", menuName = "ScriptableObjects/Move", order = 1)]
+
 public class MoveViaCard : CardEffect
 {
     public override void DoAction()
     {
-        name = cardName;
+        name = GetCardText();
         GameObject dog = GameObject.FindGameObjectWithTag("Dog");
         GameObject movePoint = GameObject.FindGameObjectWithTag("Point");
         LayerMask walls = LayerMask.GetMask("Wall");
 
-        int move = dog.GetComponent<DogMovement>().GetMovement();
+        int moveAmount = GetMoveAmount();
 
         Vector3 direction;
 
@@ -23,16 +23,16 @@ public class MoveViaCard : CardEffect
             switch (name)
             {
                 case "Move Down":
-                    direction = new Vector3(0, 1, 0); //need to replace the numbers with move but idk hows
+                    direction = new Vector3(0, moveAmount, 0); //need to replace the numbers with move but idk hows
                     break;
                 case "Move Up":
-                    direction = new Vector3(0, -1, 0);
+                    direction = new Vector3(0, moveAmount, 0);
                     break;
                 case "Move Right":
-                    direction = new Vector3(1, 0, 0);
+                    direction = new Vector3(moveAmount, 0, 0);
                     break;
                 case "Move Left":
-                    direction = new Vector3(-1, 0, 0);
+                    direction = new Vector3(moveAmount, 0, 0);
                     break;
                 default:
                     direction = Vector3.zero;
