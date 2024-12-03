@@ -12,7 +12,7 @@ public class Card : MonoBehaviour
 
     private GameManager gm;
     
-    private bool hasBeenPlayed;
+    private bool hasBeenPlayed = false;
    
 
     public int handIndex;
@@ -24,6 +24,7 @@ public class Card : MonoBehaviour
     }
     public void CardPressed()
     {
+        Debug.Log("PRESSED!");
         if (!hasBeenPlayed)
         {
             transform.position += Vector3.up * 5 * Time.deltaTime; //highlights the card thats been played

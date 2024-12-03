@@ -18,7 +18,7 @@ public class MoveViaCard : CardEffect
 
         if (dog != null)
         {
-            First_Player_Movement dogmove = new First_Player_Movement();
+            First_Player_Movement dogmove = GameObject.FindFirstObjectByType<First_Player_Movement>();
 
             switch (name)
             {
