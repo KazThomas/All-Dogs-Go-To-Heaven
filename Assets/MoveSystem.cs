@@ -12,10 +12,12 @@ public class MoveSystem : MonoBehaviour
     [SerializeField] private GameManager gm;
 
     private bool isFound = false;
-    private bool inBed = false;
+    
     private GameObject dog;
     private GameObject bed;
-    private float dist;
+    private Tile fear;
+    private List<Tile> fearList;
+    private float winDist;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +25,13 @@ public class MoveSystem : MonoBehaviour
         dog = GameObject.FindGameObjectWithTag("Dog");
         bed = GameObject.FindGameObjectWithTag("Bed");
         StartCoroutine(PlayerTurn());
+        fearList = grid.getObjects();
+        if (fearList != null)
+        {
+            fear = fearList.Find(obj => obj.tag == "Fear");
+        }
     }
 
-    private void Update()
-    {
-        dist = Vector3.Distance(dog.transform.position, bed.transform.position);
-    }
     IEnumerator Wipe()
     {
         grid.GenerateGrid();
@@ -46,8 +49,11 @@ public class MoveSystem : MonoBehaviour
         {
             gm.DrawCard();
         }
+        winDist = Vector3.Distance(dog.transform.position, bed.transform.position);
+        //add in play card logic here
+
         yield return new WaitForSeconds(1f);
-        if (dist <= 0.5f) 
+        if (winDist <= 0.5f) 
         {
             state = LevelState.WON;
             StartCoroutine(EndScreen());
@@ -59,7 +65,13 @@ public class MoveSystem : MonoBehaviour
     IEnumerator FearTurn()
     {
         //Fear behaviour AI thing goes here
+        float fearDist = Vector3.Distance(fear.transform.position, dog.transform.position);
         
+        if (fearDist <= 0.5f)
+        {
+            isFound = true;
+        }
+
         if (isFound)
         {
             state = LevelState.LOST;

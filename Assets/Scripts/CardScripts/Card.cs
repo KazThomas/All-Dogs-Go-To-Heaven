@@ -11,9 +11,9 @@ public class Card : MonoBehaviour
     [SerializeField] private string cardName;
 
     private GameManager gm;
-    private GameObject dog;
+    
     private bool hasBeenPlayed;
-    private BoxCollider2D col;
+   
 
     public int handIndex;
 
@@ -21,8 +21,6 @@ public class Card : MonoBehaviour
     void Start()
     {
         gm = FindAnyObjectByType<GameManager>();
-        dog = GameObject.FindGameObjectWithTag("Dog");
-        col = gameObject.GetComponent<BoxCollider2D>();
     }
     public void CardPressed()
     {

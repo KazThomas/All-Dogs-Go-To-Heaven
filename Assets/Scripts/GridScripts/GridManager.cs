@@ -29,6 +29,8 @@ public class GridManager : MonoBehaviour
         GenerateGrid();
     }
 
+    public List<Tile> getObjects() { return objects; }
+
 
    public void GenerateGrid()
     {
@@ -94,12 +96,13 @@ public class GridManager : MonoBehaviour
             objects.Add(fearTile);
         }
 
-        for (int i = 0; i < objects.Count; i++)
+        for (int i = 0; i < objects.Count; i++) //overlap????
         {
             int index = i;
             int next = index + 1;
-           // Vector3 dist = Vector3.Distance(objects[i].transform.position, objects[next].transform.position);   
-            
+
+            //Vector3 dist = Vector3.Distance(objects[i].transform.position, rugPrefab.transform.position);
+
         }
     }
 
