@@ -17,6 +17,9 @@ public class MoveSystem : MonoBehaviour
     private GameObject bed;
     private Tile fear;
     private List<Tile> fearList; // = new List<Tile>();
+
+    private GameObject[] fearObjs;
+
     private float winDist;
     // Start is called before the first frame update
     void Start()
@@ -25,6 +28,7 @@ public class MoveSystem : MonoBehaviour
         grid = GetComponent<GridManager>();
         dog = GameObject.FindGameObjectWithTag("Dog");
         bed = GameObject.FindGameObjectWithTag("Bed");
+        fearObjs = GameObject.FindGameObjectsWithTag("Fear");
         StartCoroutine(PlayerTurn());
         fearList = grid.getObjects();
         if (fearList != null)
@@ -65,7 +69,29 @@ public class MoveSystem : MonoBehaviour
 
     IEnumerator FearTurn()
     {
+        int rollMovement = Random.Range(1, 4);
+        Vector3 direction;
+        switch (rollMovement)
+        {
+            case 1:
+                direction = new Vector3(0, 1, 0);
+                    break;
+            case 2:
+                direction = new Vector3(1, 0, 0);
+                    break;
+            case 3:
+                direction = new Vector3(0, -1, 0);
+                    break;
+            case 4:
+                direction = new Vector3(-1, 0, 0);
+                    break;
+            default:
+                direction = Vector3.zero;
+                    break;
+        }
         //Fear behaviour AI thing goes here
+        fear.GetComponent<FearMovement>().FearMove(direction);
+
         float fearDist = Vector3.Distance(fear.transform.position, dog.transform.position);
         
         if (fearDist <= 0.5f)

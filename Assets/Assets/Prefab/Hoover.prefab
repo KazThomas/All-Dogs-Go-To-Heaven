@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3291109062215888343}
   - component: {fileID: -417093998343363887}
   - component: {fileID: 3442867380657842123}
+  - component: {fileID: 7932214783279635002}
   m_Layer: 7
   m_Name: Hoover
   m_TagString: Fear
@@ -31,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 1.93, y: 0.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8374573098245769915}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3291109062215888343
@@ -98,9 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96515efb525eb5b409141ff3793a5358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &3442867380657842123
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,3 +145,51 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7932214783279635002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4455203720606580540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585539ef899e13f4ebf0b73c27f908dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  fearPoint: {fileID: 8374573098245769915}
+  walls:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!1 &9058978907002167059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8374573098245769915}
+  m_Layer: 7
+  m_Name: MovePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8374573098245769915
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9058978907002167059}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 632628888008422680}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

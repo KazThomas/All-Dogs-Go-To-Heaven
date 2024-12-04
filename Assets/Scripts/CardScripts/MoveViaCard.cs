@@ -18,8 +18,6 @@ public class MoveViaCard : CardEffect
 
         if (dog != null)
         {
-            First_Player_Movement dogmove = GameObject.FindFirstObjectByType<First_Player_Movement>();
-
             switch (name)
             {
                 case "Move Down":
@@ -38,7 +36,7 @@ public class MoveViaCard : CardEffect
                     direction = Vector3.zero;
                     break;
             }
-            dogmove.Move(direction);
+            dog.GetComponent<Movement>().DogMove(direction);
         }
     }
 }
