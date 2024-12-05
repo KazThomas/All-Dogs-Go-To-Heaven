@@ -1612,7 +1612,6 @@ MonoBehaviour:
   rugPrefab: {fileID: 3409065067174276327, guid: 3fca25172438f6345acf75cb1407c419, type: 3}
   objects: []
   cam: {fileID: 519420032}
-  radius: 0
 --- !u!1 &1921264064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,7 +1652,6 @@ MonoBehaviour:
   rugPrefab: {fileID: 3409065067174276327, guid: 3fca25172438f6345acf75cb1407c419, type: 3}
   objects: []
   cam: {fileID: 519420032}
-  radius: 0
 --- !u!4 &1921264066
 Transform:
   m_ObjectHideFlags: 0

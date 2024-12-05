@@ -18,10 +18,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private List<Tile> objects = new List<Tile>();
 
     [SerializeField] private Transform cam;
-
-    [SerializeField] private float radius;
-    
-
+  
     private void Awake()
     {
        transform.position = new Vector3( width / 2, height / 2, 0 ); //snaps camera to the middle of the grid
