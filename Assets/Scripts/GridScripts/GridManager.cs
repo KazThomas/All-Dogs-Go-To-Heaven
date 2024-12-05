@@ -18,7 +18,10 @@ public class GridManager : MonoBehaviour
     [SerializeField] private List<Tile> objects = new List<Tile>();
 
     [SerializeField] private Transform cam;
-  
+
+    private bool dogSpawned = false;
+    private bool bedSpawned = false;
+
     private void Awake()
     {
        transform.position = new Vector3( width / 2, height / 2, 0 ); //snaps camera to the middle of the grid
@@ -59,11 +62,62 @@ public class GridManager : MonoBehaviour
         }
         cam.transform.position = new Vector3 ((float) width/2 - 0.5f, (float) height/2  - 1.5f, - 10);
 
-        PopulateGrid();
+        SpawnTiles();
         
     }
 
-    private void PopulateGrid()
+    void SpawnTiles()
+    {
+        for (int x1 = 0; x1 < width; x1++)
+        {
+            for (int y1 = 0; y1 < height; y1++)
+            {
+                int rand = Random.Range(0, 5);
+                int minAmount = 1;
+                switch (rand)
+                {
+                    case 0:
+                        //nothing spawns here
+                        break;
+                    case 1:
+                        if (!dogSpawned)
+                        {
+                            Instantiate(dogPrefab, new Vector3(x1, y1), Quaternion.identity);
+                            dogSpawned = true;
+                        }
+                        break;
+                    case 2:
+                        if (!bedSpawned)
+                        {
+                            Instantiate(bedPrefab, new Vector3(x1, y1), Quaternion.identity) ;
+                            bedSpawned = true;
+                        }
+                        break;
+                    case 3:
+                        if (minAmount <= maxAmount)
+                        {
+                            Instantiate(rugPrefab, new Vector3(x1, y1), Quaternion.identity);
+                            minAmount += 1;
+                        }
+                        break; 
+                    case 4:
+                        if (minAmount <= maxAmount)
+                        {
+                            Instantiate(hooverPrefab, new Vector3(x1, y1), Quaternion.identity);
+                            objects.Add(hooverPrefab);
+                            minAmount += 1;
+                        }
+                        break;
+                }
+            }
+        }
+    }
+
+
+
+
+
+  /*  private void PopulateGrid()
     {
         //bool canSpawn = PreventOverlap(spawnPos);
 
@@ -101,32 +155,5 @@ public class GridManager : MonoBehaviour
             //Vector3 dist = Vector3.Distance(objects[i].transform.position, rugPrefab.transform.position);
 
         }
-    }
-
-   /* bool PreventOverlap(Vector3 spawnPos)
-    {
-        col = Physics2D.OverlapCircleAll(transform.position, radius);
-
-        for (int i = 0; i < col.Length; i++)
-        {
-            Vector3 center = col[i].bounds.center;
-            float width = col[i].bounds.extents.x;
-            float height = col[i].bounds.extents.y;
-
-            float leftExtent = center.x - width;
-            float rightExtent = center.x + width;
-            float topExtent = center.y - height;
-            float bottomExtent = center.y + height;
-
-            if (spawnPos.x >= leftExtent && spawnPos.x <= rightExtent)
-            {
-                if (spawnPos.y >= bottomExtent && spawnPos.y <= topExtent)
-                {
-                    return false;
-                }
-            }
-            
-        }
-        return true;
     } */
 }
