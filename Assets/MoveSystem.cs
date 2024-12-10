@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,15 +22,19 @@ public class MoveSystem : MonoBehaviour
     private GameObject[] fearObjs;
 
     private float winDist;
+
+    [SerializeField] private TextMeshProUGUI phaseOrder;
     // Start is called before the first frame update
     void Start()
     {
         state = LevelState.START;
+        phaseOrder.text = state.ToString();
         grid = GetComponent<GridManager>();
         dog = GameObject.FindGameObjectWithTag("Dog");
         bed = GameObject.FindGameObjectWithTag("Bed");
         fearObjs = GameObject.FindGameObjectsWithTag("Fear");
         StartCoroutine(PlayerTurn());
+        
         fearList = grid.getObjects();
         if (fearList != null)
         {
@@ -48,9 +53,11 @@ public class MoveSystem : MonoBehaviour
 
     IEnumerator PlayerTurn()
     {
-       
-        int handSize = 4;
-        for (int i = 0; i < handSize; i++)
+        gm.actionsPerTurn += 1;
+        state = LevelState.PLAYERTURN;
+        phaseOrder.text = state.ToString();
+
+        for (int i = 0; i < gm.avilableSlots.Length; i++)
         {
             gm.DrawCard();
         }
@@ -63,34 +70,55 @@ public class MoveSystem : MonoBehaviour
             state = LevelState.WON;
             StartCoroutine(EndScreen());
         }
-        state = LevelState.FEARTURN;
-        StartCoroutine(FearTurn());
+        if (gm.actionsPerTurn == 0)
+        {
+            StartCoroutine(FearTurn());
+        }
     }
 
     IEnumerator FearTurn()
     {
-        int rollMovement = Random.Range(1, 4);
+        state = LevelState.FEARTURN;
+        phaseOrder.text = state.ToString();
+
+        /* foreach (GameObject hoover in fearObjs)
+       { 
+          hoover.GetComponent<FearMovement>().FearMove();
+       } */
+
+        //Fear behaviour AI thing goes here
+
+        int dir = Random.Range(1, 5);
         Vector3 direction;
-        switch (rollMovement)
+        switch (dir)
         {
             case 1:
                 direction = new Vector3(0, 1, 0);
-                    break;
+                break;
             case 2:
                 direction = new Vector3(1, 0, 0);
-                    break;
+                break;
             case 3:
                 direction = new Vector3(0, -1, 0);
-                    break;
+                break;
             case 4:
                 direction = new Vector3(-1, 0, 0);
-                    break;
+                break;
             default:
                 direction = Vector3.zero;
-                    break;
+                break;
         }
-        //Fear behaviour AI thing goes here
-        fear.GetComponent<FearMovement>().FearMove(direction);
+
+        fear.GetComponent<FearMovement>().MovePoint(direction);
+
+        /* for (int i = 0; i < fearList.Count; i++)
+        {
+            Vector3 direction;
+           
+
+            fearList[i].GetComponent<FearMovement>().MovePoint(direction);
+        } */
+
 
         float fearDist = Vector3.Distance(fear.transform.position, dog.transform.position);
         
@@ -104,7 +132,13 @@ public class MoveSystem : MonoBehaviour
             state = LevelState.LOST;
             StartCoroutine (EndScreen());
         }
-        yield return new WaitForSeconds(2f);
+        else
+        {
+            yield return new WaitForSeconds(2f);
+            StartCoroutine(PlayerTurn());
+            
+        }
+ 
     }
 
     IEnumerator EndScreen()
@@ -127,6 +161,6 @@ public class MoveSystem : MonoBehaviour
 
     private void LoadLoseScreen()
     {
-        //add in lose screen here
+        SceneManager.LoadScene("Lose Screen");
     }
 }

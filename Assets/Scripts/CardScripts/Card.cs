@@ -25,11 +25,12 @@ public class Card : MonoBehaviour
     public void CardPressed()
     {
         Debug.Log("PRESSED!");
-        if (!hasBeenPlayed)
+        if (!hasBeenPlayed && gm.actionsPerTurn > 0)
         {
             transform.position += Vector3.up * 5 * Time.deltaTime; //highlights the card thats been played
             hasBeenPlayed = true;
             move.DoAction();
+            gm.actionsPerTurn--;
             gm.avilableSlots[handIndex] = true; //reopens the hand for a new card
             Invoke("Discard", 0.1f);
         }
@@ -39,6 +40,7 @@ public class Card : MonoBehaviour
     {
         gm.discard.Add(this);
         gameObject.SetActive(false); //hides the card away
+        
     }
 
     private void OnCollisionEnter(Collision collision)

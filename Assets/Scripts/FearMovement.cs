@@ -10,22 +10,49 @@ public class FearMovement : MonoBehaviour
 
     [SerializeField] private Transform fearPoint;
     [SerializeField] private LayerMask walls;
+    private int dir;
 
     private void Start()
     {
         fearPoint.parent = null;
+        dir = Random.Range(1, 4);
     }
     private void FixedUpdate()
     {
         transform.position = Vector3.MoveTowards(transform.position, fearPoint.position, moveSpeed * Time.deltaTime);
     }
 
-    public void FearMove(Vector3 dir)
+    public void MovePoint(Vector3 dir)
     {
         Vector3 nextPos = fearPoint.position + dir;
-        if (!Physics2D.OverlapCircle(nextPos, 0.2f, walls))
+        if (!Physics2D.OverlapCircle(nextPos, 0.5f, walls))
         {
+            Debug.Log("Went through");
             fearPoint.position = nextPos;
         }
     }
+
+    /* public void FearMove()
+    {
+        Vector3 direction;
+        switch (dir)
+        {
+            case 1:
+                direction = new Vector3(0, 1, 0);
+                break;
+            case 2:
+                direction = new Vector3(1, 0, 0);
+                break;
+            case 3:
+                direction = new Vector3(0, -1, 0);
+                break;
+            case 4:
+                direction = new Vector3(-1, 0, 0);
+                break;
+            default:
+                direction = Vector3.zero;
+                break;
+        }
+        MovePoint(direction);
+    } */
 }

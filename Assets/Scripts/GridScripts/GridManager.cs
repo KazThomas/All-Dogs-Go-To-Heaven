@@ -114,9 +114,6 @@ public class GridManager : MonoBehaviour
     }
 
 
-
-
-
   /*  private void PopulateGrid()
     {
         //bool canSpawn = PreventOverlap(spawnPos);

@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     [SerializeField] LayerMask walls;
 
     private GameObject dog;
-    private GameObject rug;
+    private GameObject[] rug;
     [SerializeField] private Sprite dogInRug;
     [SerializeField] private Sprite plainRug;
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
     {
         movePoint.parent = null;
         dog = GameObject.FindGameObjectWithTag("Dog");
-        rug = GameObject.FindGameObjectWithTag("Hiding Place");
+        rug = GameObject.FindGameObjectsWithTag("Hiding Place");
 
         
     }
@@ -44,22 +44,38 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject == rug)
+        if (other.gameObject.tag == "Hiding Place")
         {
             Debug.Log("Is Touching");
             dog.GetComponent<SpriteRenderer>().enabled = false;
 
-            rug.GetComponent<SpriteRenderer>().sprite = dogInRug;
+            foreach (GameObject go in rug)
+            {
+                if (other.gameObject == go)
+                {
+                    go.GetComponent<SpriteRenderer>().sprite = dogInRug;
+                }
+            }
+
+           // rug.GetComponent<SpriteRenderer>().sprite = dogInRug;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject == rug)
+        if (collision.gameObject.tag == "Hiding Place")
         {
             dog.GetComponent <SpriteRenderer>().enabled = true;
 
-            rug.GetComponent<SpriteRenderer>().sprite = plainRug;
+            foreach (GameObject go in rug)
+            {
+                if (collision.gameObject == go)
+                {
+                    go.GetComponent<SpriteRenderer>().sprite = plainRug;
+                }
+            }
+
+            //rug.GetComponent<SpriteRenderer>().sprite = plainRug;
         }
     }
 }

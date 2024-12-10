@@ -12,13 +12,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform discardLocation;
     public bool[] avilableSlots;
 
+    public int actionsPerTurn = 0;
+
     [SerializeField] private TextMeshProUGUI deckText;
     [SerializeField] private TextMeshProUGUI discardText;
 
-    private void Start()
-    {
-        //DrawCard();
-    }
     private void Update()
     {
         deckText.SetText(deck.Count.ToString());
@@ -27,7 +25,6 @@ public class GameManager : MonoBehaviour
 
     public void DrawCard() //currently drawing from the MoveSystem 
     {
-        //int duplicates = 2;
         if (deck.Count >= 1) //if deck is not empty
         {
             Card randCard = deck[Random.Range(0, deck.Count)]; //randomly gives the player a card that is still in the deck
