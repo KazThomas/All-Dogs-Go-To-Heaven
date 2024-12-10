@@ -46,6 +46,7 @@ public class Movement : MonoBehaviour
     {
         if (other.gameObject == rug)
         {
+            Debug.Log("Is Touching");
             dog.GetComponent<SpriteRenderer>().enabled = false;
 
             rug.GetComponent<SpriteRenderer>().sprite = dogInRug;
