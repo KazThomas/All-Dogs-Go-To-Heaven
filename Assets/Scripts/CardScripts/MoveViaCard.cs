@@ -21,7 +21,7 @@ public class MoveViaCard : CardEffect
             switch (name)
             {
                 case "Move Down":
-                    direction = new Vector3(0, moveAmount, 0); //need to replace the numbers with move but idk hows
+                    direction = new Vector3(0, moveAmount, 0); 
                     break;
                 case "Move Up":
                     direction = new Vector3(0, moveAmount, 0);

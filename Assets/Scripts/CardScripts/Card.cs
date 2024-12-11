@@ -58,7 +58,7 @@ public class Card : MonoBehaviour
         if (hit.collider == card)
         {
             Debug.Log("Hit On Card");
-            CardPressed();
+            
         }
     }
 
@@ -66,4 +66,5 @@ public class Card : MonoBehaviour
     {
         //DetectRay();
     }
+
 }

@@ -1573,6 +1573,7 @@ MonoBehaviour:
   deckLocation: {fileID: 1203363623}
   discardLocation: {fileID: 1445581653}
   avilableSlots: 01010101
+  actionsPerTurn: 0
   deckText: {fileID: 889480601}
   discardText: {fileID: 638287397}
 --- !u!114 &1849538628
