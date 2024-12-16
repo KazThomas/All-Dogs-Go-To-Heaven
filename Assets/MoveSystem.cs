@@ -42,6 +42,13 @@ public class MoveSystem : MonoBehaviour
         }
     }
 
+    public void EndPlayerTurn()
+    {
+        state = LevelState.FEARTURN;
+        phaseOrder.text = state.ToString();
+        StartCoroutine(FearTurn());
+    }
+
     IEnumerator Wipe()
     {
         grid.GenerateGrid();
@@ -70,10 +77,6 @@ public class MoveSystem : MonoBehaviour
             state = LevelState.WON;
             StartCoroutine(EndScreen());
         }
-        if (gm.actionsPerTurn == 0)
-        {
-            StartCoroutine(FearTurn());
-        }
     }
 
     IEnumerator FearTurn()
@@ -88,45 +91,38 @@ public class MoveSystem : MonoBehaviour
 
         //Fear behaviour AI thing goes here
 
-        int dir = Random.Range(1, 5);
-        Vector3 direction;
-        switch (dir)
+        foreach (GameObject hoover in fearObjs)
         {
-            case 1:
-                direction = new Vector3(0, 1, 0);
-                break;
-            case 2:
-                direction = new Vector3(1, 0, 0);
-                break;
-            case 3:
-                direction = new Vector3(0, -1, 0);
-                break;
-            case 4:
-                direction = new Vector3(-1, 0, 0);
-                break;
-            default:
-                direction = Vector3.zero;
-                break;
-        }
+            int dir = Random.Range(1, 5);
 
-        fear.GetComponent<FearMovement>().MovePoint(direction);
-
-        /* for (int i = 0; i < fearList.Count; i++)
-        {
             Vector3 direction;
-           
+            switch (dir)
+            {
+                case 1:
+                    direction = new Vector3(0, 1, 0);
+                    break;
+                case 2:
+                    direction = new Vector3(1, 0, 0);
+                    break;
+                case 3:
+                    direction = new Vector3(0, -1, 0);
+                    break;
+                case 4:
+                    direction = new Vector3(-1, 0, 0);
+                    break;
+                default:
+                    direction = Vector3.zero;
+                    break;
+            }
 
-            fearList[i].GetComponent<FearMovement>().MovePoint(direction);
-        } */
+            hoover.GetComponent<FearMovement>().MovePoint(direction);
+            float fearDist = Vector3.Distance(hoover.transform.position, dog.transform.position);
 
-
-        float fearDist = Vector3.Distance(fear.transform.position, dog.transform.position);
-        
-        if (fearDist <= 0.5f)
-        {
-            isFound = true;
+            if (fearDist <= 0.5f)
+            {
+                isFound = true;
+            }
         }
-
         if (isFound)
         {
             state = LevelState.LOST;

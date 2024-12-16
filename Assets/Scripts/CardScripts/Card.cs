@@ -25,7 +25,7 @@ public class Card : MonoBehaviour
     public void CardPressed()
     {
         Debug.Log("PRESSED!");
-        if (!hasBeenPlayed && gm.actionsPerTurn > 0)
+        if (!hasBeenPlayed) //&& gm.actionsPerTurn > 0)
         {
             transform.position += Vector3.up * 5 * Time.deltaTime; //highlights the card thats been played
             hasBeenPlayed = true;
