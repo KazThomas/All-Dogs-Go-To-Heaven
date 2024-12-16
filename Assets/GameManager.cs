@@ -114,8 +114,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //deck = discard;
-            discard.Clear();
+            deck = discard;
+            
             //reconstructs the deck once its more or less empty
         }
     }

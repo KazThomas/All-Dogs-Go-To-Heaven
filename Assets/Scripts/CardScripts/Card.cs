@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Purchasing;
 
 public class Card : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class Card : MonoBehaviour
     private void Discard()
     {
         gm.discard.Add(this);
+        hasBeenPlayed = false;
         gameObject.SetActive(false); //hides the card away
         
     }
