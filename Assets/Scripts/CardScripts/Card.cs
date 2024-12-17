@@ -30,7 +30,7 @@ public class Card : MonoBehaviour
         {
             transform.position += Vector3.up * 5 * Time.deltaTime; //highlights the card thats been played
             hasBeenPlayed = true;
-            move.DoAction();
+            //move.DoAction();
             gm.actionsPerTurn--;
             gm.avilableSlots[handIndex] = true; //reopens the hand for a new card
             Invoke("Discard", 0.1f);

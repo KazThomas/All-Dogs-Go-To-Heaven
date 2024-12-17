@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
     public interface ICommandMove
@@ -14,6 +15,8 @@ using UnityEngine;
     public abstract void Undo();
     protected string name;
     protected Vector3 direction;
+    protected Movement dogMove;
+    protected Card card;
     protected GameObject target;
     public void SetDirection(Vector3 direction)
     {
@@ -25,4 +28,7 @@ using UnityEngine;
     }
     public string GetName()
             { return name; }
+
+
     } 
+
