@@ -31,4 +31,28 @@ public class FearMovement : MonoBehaviour
             fearPoint.position = nextPos;
         }
     }
+
+    /* public void FearMove()
+    {
+        Vector3 direction;
+        switch (dir)
+        {
+            case 1:
+                direction = new Vector3(0, 1, 0);
+                break;
+            case 2:
+                direction = new Vector3(1, 0, 0);
+                break;
+            case 3:
+                direction = new Vector3(0, -1, 0);
+                break;
+            case 4:
+                direction = new Vector3(-1, 0, 0);
+                break;
+            default:
+                direction = Vector3.zero;
+                break;
+        }
+        MovePoint(direction);
+    } */
 }

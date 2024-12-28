@@ -62,7 +62,8 @@ public class GridManager : MonoBehaviour
         }
         cam.transform.position = new Vector3 ((float) width/2 - 0.5f, (float) height/2  - 1.5f, - 10);
 
-        SpawnTiles();  
+        SpawnTiles();
+        
     }
 
     void SpawnTiles()
@@ -111,4 +112,45 @@ public class GridManager : MonoBehaviour
             }
         }
     }
+
+
+  /*  private void PopulateGrid()
+    {
+        //bool canSpawn = PreventOverlap(spawnPos);
+
+        //singletons
+        Vector3 dogPos = new Vector3 (Random.Range(0, width), Random.Range(0, height), 0);
+        Vector3 bedPos = new Vector3(Random.Range(0, width), Random.Range(0, height), 0);
+
+        //spawn the things that only need to be one ofs, singletons....
+        var dogTile = Instantiate(dogPrefab, dogPos, Quaternion.identity);
+        objects.Add(dogTile);
+        var bedTile = Instantiate(bedPrefab, bedPos, Quaternion.identity);
+        objects.Add(bedTile);
+
+        int fearAmount = Random.Range(1, maxAmount), hideAmount = Random.Range(1, maxAmount); //minimum 1 of each type of non-dog/bed item
+
+        for (int i = 0; i < fearAmount; i++)
+        {
+            Vector3 randomFearPos = new Vector3(Random.Range(0, width), Random.Range(0, height), 0);
+            for (int j = 0; j < hideAmount; j++)
+            {
+                Vector3 randomHidePos = new Vector3(Random.Range(0, width), Random.Range(0, height), 0);
+
+                var hideTile = Instantiate(rugPrefab, randomHidePos, Quaternion.identity);
+                objects.Add(hideTile);
+            }
+            var fearTile = Instantiate(hooverPrefab, randomFearPos, Quaternion.identity);
+            objects.Add(fearTile);
+        }
+
+        for (int i = 0; i < objects.Count; i++) //overlap????
+        {
+            int index = i;
+            int next = index + 1;
+
+            //Vector3 dist = Vector3.Distance(objects[i].transform.position, rugPrefab.transform.position);
+
+        }
+    } */
 }

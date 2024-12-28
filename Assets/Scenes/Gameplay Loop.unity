@@ -1791,7 +1791,6 @@ GameObject:
   - component: {fileID: 1849538627}
   - component: {fileID: 1849538628}
   - component: {fileID: 1849538629}
-  - component: {fileID: 1849538630}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1872,33 +1871,75 @@ MonoBehaviour:
   m_GameObject: {fileID: 1849538624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f50e5ae2cadcbed4ab6c914926ad8b9e, type: 3}
+  m_Script: {fileID: 11500000, guid: 920495aa724af2a4bb5b6175d7a1e0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 519420032}
   width: 5
   height: 5
-  dogPrefab: {fileID: 5899684579907344536, guid: 4031dbcd272fc2940803c9aeb55d6f27, type: 3}
-  bedPrefab: {fileID: 9086486792890643581, guid: 29d8bd3bb6d553f4687769e255278ede, type: 3}
-  hooverPrefab: {fileID: 4455203720606580540, guid: 9c47b753c10cd74479382d9b2b9633d9, type: 3}
-  rugPrefab: {fileID: 2462273500546469364, guid: 3fca25172438f6345acf75cb1407c419, type: 3}
+  maxAmount: 2
+  tilePrefab: {fileID: 7793030129845846577, guid: 9ed7710be8d76e345919801df6da6b6c, type: 3}
+  linePrefab: {fileID: 7406128123393850864, guid: 0443c21079bd5604c9e8d93bf599f74c, type: 3}
+  dogPrefab: {fileID: 5205544607253669264, guid: 4031dbcd272fc2940803c9aeb55d6f27, type: 3}
+  bedPrefab: {fileID: 6498483955543349988, guid: 29d8bd3bb6d553f4687769e255278ede, type: 3}
+  hooverPrefab: {fileID: -417093998343363887, guid: 9c47b753c10cd74479382d9b2b9633d9, type: 3}
+  rugPrefab: {fileID: 3409065067174276327, guid: 3fca25172438f6345acf75cb1407c419, type: 3}
   objects: []
---- !u!114 &1849538630
+  cam: {fileID: 519420032}
+--- !u!1 &1921264064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1921264066}
+  - component: {fileID: 1921264065}
+  m_Layer: 0
+  m_Name: Grid Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1921264065
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1849538624}
+  m_GameObject: {fileID: 1921264064}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83b78e0d55c1f5e49bd65c68ba3a2937, type: 3}
+  m_Script: {fileID: 11500000, guid: 920495aa724af2a4bb5b6175d7a1e0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linePrefab: {fileID: 6527021119491746475, guid: 0443c21079bd5604c9e8d93bf599f74c, type: 3}
-  tilePrefab: {fileID: 488907038080216884, guid: 9ed7710be8d76e345919801df6da6b6c, type: 3}
   width: 5
   height: 5
+  maxAmount: 2
+  tilePrefab: {fileID: 7793030129845846577, guid: 9ed7710be8d76e345919801df6da6b6c, type: 3}
+  linePrefab: {fileID: 7406128123393850864, guid: 0443c21079bd5604c9e8d93bf599f74c, type: 3}
+  dogPrefab: {fileID: 5205544607253669264, guid: 4031dbcd272fc2940803c9aeb55d6f27, type: 3}
+  bedPrefab: {fileID: 6498483955543349988, guid: 29d8bd3bb6d553f4687769e255278ede, type: 3}
+  hooverPrefab: {fileID: -417093998343363887, guid: 9c47b753c10cd74479382d9b2b9633d9, type: 3}
+  rugPrefab: {fileID: 3409065067174276327, guid: 3fca25172438f6345acf75cb1407c419, type: 3}
+  objects: []
+  cam: {fileID: 519420032}
+--- !u!4 &1921264066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921264064}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.357199, y: 0.5952606, z: 0.96086395}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1972661352
 GameObject:
   m_ObjectHideFlags: 0

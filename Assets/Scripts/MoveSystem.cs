@@ -89,7 +89,7 @@ public class MoveSystem : MonoBehaviour
         {
             yield return new WaitForSeconds(delay);
 
-            
+
             foreach (GameObject hoover in fearObjs)
             {
                 int dir = Random.Range(1, 5);
