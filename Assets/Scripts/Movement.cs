@@ -21,6 +21,8 @@ public class Movement : MonoBehaviour
         movePoint.parent = null;
         dog = GameObject.FindGameObjectWithTag("Dog");
         rug = GameObject.FindGameObjectsWithTag("Hiding Place");
+
+        
     }
 
     // Update is called once per frame
@@ -34,7 +36,6 @@ public class Movement : MonoBehaviour
         Vector3 newPos = movePoint.position + direction;
         if (!Physics2D.OverlapCircle(newPos, 0.2f, walls))
         {
-            Debug.Log("Dog hits a wall");
             movePoint.position = newPos;
         }
     }
