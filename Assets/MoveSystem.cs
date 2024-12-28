@@ -9,7 +9,7 @@ public enum LevelState {START, PLAYERTURN, FEARTURN, WON, LOST }
 public class MoveSystem : MonoBehaviour
 {
     [SerializeField] private LevelState state;
-    [SerializeField] private GridManager grid;
+   // [SerializeField] private GridManager grid;
     [SerializeField] private GameManager gm;
 
     private bool isFound = false;
@@ -21,25 +21,17 @@ public class MoveSystem : MonoBehaviour
 
     private GameObject[] fearObjs;
 
-    private float winDist;
-
     [SerializeField] private TextMeshProUGUI phaseOrder;
     // Start is called before the first frame update
     void Start()
     {
         state = LevelState.START;
         phaseOrder.text = state.ToString();
-        grid = GetComponent<GridManager>();
+        //grid = GetComponent<GridManager>();
         dog = GameObject.FindGameObjectWithTag("Dog");
         bed = GameObject.FindGameObjectWithTag("Bed");
         fearObjs = GameObject.FindGameObjectsWithTag("Fear");
         StartCoroutine(PlayerTurn());
-        
-        fearList = grid.getObjects();
-        if (fearList != null)
-        {
-            fear = fearList.Find(obj => obj.tag == "Fear");
-        }
     }
 
     public void EndPlayerTurn()
@@ -52,7 +44,7 @@ public class MoveSystem : MonoBehaviour
 
     IEnumerator Wipe()
     {
-        grid.GenerateGrid();
+        //5sgrid.GenerateGrid();
 
         yield return new WaitForSeconds(1f);
         state = LevelState.PLAYERTURN;
@@ -69,7 +61,23 @@ public class MoveSystem : MonoBehaviour
         {
             gm.DrawCard();
         }
-        winDist = Vector3.Distance(dog.transform.position, bed.transform.position);
+
+        if (dog == null)
+        {
+            Debug.LogError("Dog object is null");
+            yield break;
+        }
+
+        if (bed == null)
+        {
+            Debug.LogError("Bed object is null");
+            yield break;
+        }
+
+        Debug.Log($"Dog Position: {dog.transform.position}");
+        Debug.Log($"Bed Position: {bed.transform.position}");
+        float winDist = Vector3.Distance(dog.transform.position, bed.transform.position);
+        Debug.Log(winDist);
         //add in play card logic here
 
         yield return new WaitForSeconds(1f);

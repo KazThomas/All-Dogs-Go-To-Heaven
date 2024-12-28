@@ -30,5 +30,5 @@ public class FearMovement : MonoBehaviour
             Debug.Log("Went through");
             fearPoint.position = nextPos;
         }
-    }
+    }                                                                                                                                                                         
 }
