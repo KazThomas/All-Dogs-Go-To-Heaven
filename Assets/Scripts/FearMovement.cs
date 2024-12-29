@@ -10,12 +10,10 @@ public class FearMovement : MonoBehaviour
 
     [SerializeField] private Transform fearPoint;
     [SerializeField] private LayerMask walls;
-    private int dir;
-
+   
     private void Start()
     {
         fearPoint.parent = null;
-        dir = Random.Range(1, 4);
     }
     private void FixedUpdate()
     {

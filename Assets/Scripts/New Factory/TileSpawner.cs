@@ -12,7 +12,7 @@ public class TileSpawner : MonoBehaviour, Spawner
     [SerializeField] private GameObject linePrefab;
     [SerializeField] private GameObject tilePrefab;
     [SerializeField] private int width, height;
-    private int numSpawns = 0;
+
     public GameObject Spawn(GameObject caller)
     {
         GameObject newTile = Instantiate(linePrefab);

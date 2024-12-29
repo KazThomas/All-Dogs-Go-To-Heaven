@@ -56,6 +56,7 @@ public class MoveSystem : MonoBehaviour
         gm.actionsPerTurn += 1;
         state = LevelState.PLAYERTURN;
         phaseOrder.text = state.ToString();
+        dog = GameObject.FindGameObjectWithTag("Dog");
 
         for (int i = 0; i < gm.avilableSlots.Length; i++)
         {
