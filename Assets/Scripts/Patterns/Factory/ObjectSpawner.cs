@@ -16,7 +16,6 @@ public class ObjectSpawner : MonoBehaviour, ObjSpawner
     [SerializeField] private GameObject bedPrefab;
     [SerializeField] private GameObject hooverPrefab;
     [SerializeField] private GameObject rugPrefab;
-    [SerializeField] private GameObject blank;
 
     [SerializeField] private List<GameObject> objects = new List<GameObject>();
 
@@ -24,14 +23,6 @@ public class ObjectSpawner : MonoBehaviour, ObjSpawner
 
     private bool dogSpawned = false;
     private bool bedSpawned = false;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //dogPrefab = GameObject.FindGameObjectWithTag("Dog");
-    }
-
 
     public GameObject SpawnObj(GameObject caller)
     {

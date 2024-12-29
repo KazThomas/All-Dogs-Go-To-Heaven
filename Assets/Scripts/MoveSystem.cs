@@ -44,7 +44,7 @@ public class MoveSystem : MonoBehaviour
 
     IEnumerator Wipe()
     {
-        //5sgrid.GenerateGrid();
+        //sgrid.GenerateGrid();
 
         yield return new WaitForSeconds(1f);
         state = LevelState.PLAYERTURN;
@@ -156,6 +156,7 @@ public class MoveSystem : MonoBehaviour
             LoadWinScreen();
         }
         yield return new WaitForSeconds(3f);
+        ResetLevel();
     }
 
     private void LoadWinScreen()
@@ -166,5 +167,10 @@ public class MoveSystem : MonoBehaviour
     private void LoadLoseScreen()
     {
         SceneManager.LoadScene("Lose Screen");
+    }
+
+    private void ResetLevel()
+    {
+        SceneManager.LoadScene("Gameplay Loop");
     }
 }
