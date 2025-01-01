@@ -25,15 +25,10 @@ public class TileSpawner : MonoBehaviour, Spawner
                 if (x == width - 1 && y < height)
                 {
                     newTile = Instantiate(linePrefab, new Vector3(x, y), Quaternion.identity);
-                    /* if ( x == 3 && y == 0 )
-                    {
-                        return;
-                    } */
                 }
                 else if (y == 0 && x < width - 1)
                 {
                     newTile = Instantiate(linePrefab, new Vector3(x, y), Quaternion.Euler(-flip));
-                    //need to figure out why the bottom right tile is the way it is
                 }
                 else
                 {

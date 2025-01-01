@@ -9,15 +9,12 @@ public enum LevelState {START, PLAYERTURN, FEARTURN, WON, LOST }
 public class MoveSystem : MonoBehaviour
 {
     [SerializeField] private LevelState state;
-   // [SerializeField] private GridManager grid;
     [SerializeField] private GameManager gm;
 
     private bool isFound = false;
     
     private GameObject dog;
     private GameObject bed;
-    private Tile fear;
-    private List<Tile> fearList; // = new List<Tile>();
 
     private GameObject[] fearObjs;
 
@@ -31,6 +28,17 @@ public class MoveSystem : MonoBehaviour
         dog = GameObject.FindGameObjectWithTag("Dog");
         bed = GameObject.FindGameObjectWithTag("Bed");
         fearObjs = GameObject.FindGameObjectsWithTag("Fear");
+
+        if (dog == null)
+        {
+            Debug.LogError("Dog object is null");
+        }
+
+        if (bed == null)
+        {
+            Debug.LogError("Bed object is null");
+        }
+
         StartCoroutine(PlayerTurn());
     }
 
@@ -38,53 +46,48 @@ public class MoveSystem : MonoBehaviour
     {
         state = LevelState.FEARTURN;
         phaseOrder.text = state.ToString();
-        Invoke("FearTurn", 2f);
         StartCoroutine(FearTurn(0.6f));
-    }
-
-    IEnumerator Wipe()
-    {
-        //sgrid.GenerateGrid();
-
-        yield return new WaitForSeconds(1f);
-        state = LevelState.PLAYERTURN;
-        StartCoroutine(PlayerTurn());
     }
 
     IEnumerator PlayerTurn()
     {
-        gm.actionsPerTurn += 1;
-        state = LevelState.PLAYERTURN;
-        phaseOrder.text = state.ToString();
-        dog = GameObject.FindGameObjectWithTag("Dog");
-
-        for (int i = 0; i < gm.avilableSlots.Length; i++)
+        while (!isFound)
         {
-            gm.DrawCard();
+            gm.actionsPerTurn += 1;
+            state = LevelState.PLAYERTURN;
+            phaseOrder.text = state.ToString();
+            dog = GameObject.FindGameObjectWithTag("Dog");
+
+            for (int i = 0; i < gm.avilableSlots.Length; i++)
+            {
+                gm.DrawCard();
+            }
+
+           
+            float winDist = Vector3.Distance(dog.transform.position, bed.transform.position);
+
+            yield return new WaitForSeconds(1f);
+            if (winDist <= 0.5f)
+            {
+                state = LevelState.WON;
+                StartCoroutine(EndScreen());
+            }
+
+            foreach (GameObject hoover in fearObjs)
+            {
+                float loseDist = Vector3.Distance(hoover.transform.position, dog.transform.position);
+                if (loseDist < 0.5)
+                {
+                    isFound = true;
+                }
+            }
         }
 
-        if (dog == null)
+        if (isFound)
         {
-            Debug.LogError("Dog object is null");
-            yield break;
-        }
-
-        if (bed == null)
-        {
-            Debug.LogError("Bed object is null");
-            yield break;
-        }
-
-        Debug.Log($"Dog Position: {dog.transform.position}");
-        Debug.Log($"Bed Position: {bed.transform.position}");
-        float winDist = Vector3.Distance(dog.transform.position, bed.transform.position);
-        Debug.Log(winDist);
-        //add in play card logic here
-
-        yield return new WaitForSeconds(1f);
-        if (winDist <= 0.5f) 
-        {
-            state = LevelState.WON;
+            Debug.Log("IS FOUND!");
+            state = LevelState.LOST;
+            yield return new WaitForSeconds(0.6f);
             StartCoroutine(EndScreen());
         }
     }
@@ -129,6 +132,7 @@ public class MoveSystem : MonoBehaviour
                 if (fearDist <= 0.5f)
                 {
                     isFound = true;
+                    Debug.Log("Is Found!");
                 }
             }
             if (isFound)

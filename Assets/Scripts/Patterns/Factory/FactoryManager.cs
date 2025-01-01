@@ -11,19 +11,12 @@ public class FactoryManager : MonoBehaviour
 
     private void Awake()
     {
-        cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 1.5f, -10);
+        cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 2.5f, -10);
+
         tileSpawner = GetComponent<Spawner>();
         objectSpawner = GetComponent<ObjSpawner>();
 
-
         tileSpawner.Spawn(gameObject);
         objectSpawner.SpawnObj(gameObject);
-        //SpawnTiles();
-
-    }
-
-    void SpawnTiles()
-    {
-        
     }
 }

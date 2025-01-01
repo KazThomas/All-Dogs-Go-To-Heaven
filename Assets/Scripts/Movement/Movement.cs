@@ -18,11 +18,9 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        movePoint.parent = null;
+        movePoint.parent = null; //so dog can follow to the movepoint 
         dog = GameObject.FindGameObjectWithTag("Dog");
         rug = GameObject.FindGameObjectsWithTag("Hiding Place");
-
-        
     }
 
     // Update is called once per frame
@@ -44,38 +42,28 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Hiding Place")
+        foreach (GameObject go in rug)
         {
-            Debug.Log("Is Touching");
-            dog.GetComponent<SpriteRenderer>().enabled = false;
-
-            foreach (GameObject go in rug)
+            if (other.gameObject.tag == "Hiding Place" && other.gameObject == go)
             {
-                if (other.gameObject == go)
-                {
-                    go.GetComponent<SpriteRenderer>().sprite = dogInRug;
-                }
+                Debug.Log("Is Touching");
+                dog.GetComponent<SpriteRenderer>().enabled = false;
+                go.GetComponent<SpriteRenderer>().sprite = dogInRug;
             }
-
-           // rug.GetComponent<SpriteRenderer>().sprite = dogInRug;
         }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Hiding Place")
+        foreach (GameObject go in rug)
         {
-            dog.GetComponent <SpriteRenderer>().enabled = true;
-
-            foreach (GameObject go in rug)
+            if (collision.gameObject.tag == "Hiding Place" && collision.gameObject == go)
             {
-                if (collision.gameObject == go)
-                {
-                    go.GetComponent<SpriteRenderer>().sprite = plainRug;
-                }
+                dog.GetComponent<SpriteRenderer>().enabled = true;
+                go.GetComponent<SpriteRenderer>().sprite = plainRug;
             }
-
-            //rug.GetComponent<SpriteRenderer>().sprite = plainRug;
         }
+
     }
 }

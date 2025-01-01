@@ -73,32 +73,9 @@ public class GameManager : MonoBehaviour
         if (deck.Count >= 1) //if deck is not empty
         {
             Card randCard = deck[Random.Range(0, deck.Count)]; //randomly gives the player a card that is still in the deck
+            //Debug.Log(randCard); what card is being drawn
 
-            //Shuffle(Stackdeck.Pop());
-            
-          /*  Card card = deck.Pop();
-            string tempname = card.name;
-
-            switch (tempname)
-                case "Move Down":
-                
-                break;
-            case "Move Up":
-                
-                break;
-            case "Move Right":
-                
-                break;
-            case "Move Left":
-                
-                break;
-            default:
-                
-                break; */
-
-                //Debug.Log(randCard); what card is being drawn
-
-                for (int i = 0; i < avilableSlots.Length; i++)
+            for (int i = 0; i < avilableSlots.Length; i++)
             {
                 if (avilableSlots[i])
                 {
@@ -114,8 +91,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            deck = discard;
-            
+            deck = discard;  
             //reconstructs the deck once its more or less empty
         }
     }

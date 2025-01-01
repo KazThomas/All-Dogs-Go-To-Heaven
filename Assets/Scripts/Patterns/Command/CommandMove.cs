@@ -13,7 +13,7 @@ using UnityEngine;
     {
     public abstract void Execute();
     public abstract void Undo();
-    protected string name;
+    protected new string name;
     protected Vector3 direction;
     protected Movement dogMove;
     protected Card card;
@@ -28,7 +28,5 @@ using UnityEngine;
     }
     public string GetName()
             { return name; }
-
-
     } 
 
