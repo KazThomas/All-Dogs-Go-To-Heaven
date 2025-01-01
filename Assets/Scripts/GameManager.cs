@@ -95,4 +95,12 @@ public class GameManager : MonoBehaviour
             //reconstructs the deck once its more or less empty
         }
     }
+
+    private void FixedUpdate()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 }
