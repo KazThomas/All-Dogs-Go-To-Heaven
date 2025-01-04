@@ -12,8 +12,6 @@ public class ObjectSpawner : MonoBehaviour, Spawner
     [SerializeField] private GameObject hooverPrefab;
     [SerializeField] private GameObject rugPrefab;
 
-    [SerializeField] private List<GameObject> objects = new List<GameObject>();
-
     private int maxAmount = 2;
 
     private bool dogSpawned = false;
@@ -62,7 +60,6 @@ public class ObjectSpawner : MonoBehaviour, Spawner
                         if (minAmount <= maxAmount)
                         {
                             newObj = Instantiate(hooverPrefab, new Vector3(x1, y1), Quaternion.identity);
-                            objects.Add(hooverPrefab);
                             minAmount += 1;
                         }
                         break;
