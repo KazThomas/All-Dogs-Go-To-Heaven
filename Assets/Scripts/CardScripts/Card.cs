@@ -5,8 +5,6 @@ using UnityEngine.Purchasing;
 
 public class Card : MonoBehaviour
 {
-    [SerializeField] private GameObject card;
-
     [SerializeField] private string cardName;
 
     private GameManager gm;
@@ -26,7 +24,7 @@ public class Card : MonoBehaviour
         Debug.Log("PRESSED!");
         if (!hasBeenPlayed) //&& gm.actionsPerTurn > 0)
         {
-            transform.position += Vector3.up * 5 * Time.deltaTime; //highlights the card thats been played
+            transform.position += Vector3.up * 75 * Time.deltaTime; //highlights the card thats been played
             hasBeenPlayed = true;
             gm.actionsPerTurn--;
             gm.avilableSlots[handIndex] = true; //reopens the hand for a new card

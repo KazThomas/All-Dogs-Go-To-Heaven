@@ -3,12 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public interface ObjSpawner
-{
-    GameObject SpawnObj(GameObject caller);
-}
-
-public class ObjectSpawner : MonoBehaviour, ObjSpawner
+public class ObjectSpawner : MonoBehaviour, Spawner
 {
     [SerializeField] private int width, height;
 
@@ -24,7 +19,7 @@ public class ObjectSpawner : MonoBehaviour, ObjSpawner
     private bool dogSpawned = false;
     private bool bedSpawned = false;
 
-    public GameObject SpawnObj(GameObject caller)
+    public GameObject Spawn(GameObject caller)
     {
         GameObject newObj = null;
         for (int x1 = 0; x1 < width; x1++)

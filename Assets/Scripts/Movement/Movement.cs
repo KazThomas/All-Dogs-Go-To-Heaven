@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour
         {
             movePoint.position = newPos;
         }
-    }
+    } 
 
     //Hiding Dog
 

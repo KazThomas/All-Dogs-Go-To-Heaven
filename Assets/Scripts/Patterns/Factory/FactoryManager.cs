@@ -5,7 +5,7 @@ using UnityEngine;
 public class FactoryManager : MonoBehaviour
 {
     private Spawner tileSpawner;
-    private ObjSpawner objectSpawner;
+    private Spawner objectSpawner;
     [SerializeField] private Transform cam;
     [SerializeField] private int width, height;
 
@@ -13,10 +13,13 @@ public class FactoryManager : MonoBehaviour
     {
         cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 2.5f, -10);
 
-        tileSpawner = GetComponent<Spawner>();
-        objectSpawner = GetComponent<ObjSpawner>();
+        tileSpawner = GetComponent<TileSpawner>();
+        objectSpawner = GetComponent<ObjectSpawner>();
 
-        tileSpawner.Spawn(gameObject);
-        objectSpawner.SpawnObj(gameObject);
+        Spawner[] spawners = new Spawner[] { tileSpawner, objectSpawner };
+        foreach(Spawner s in spawners)
+        {
+            s.Spawn(gameObject);
+        }
     }
 }
