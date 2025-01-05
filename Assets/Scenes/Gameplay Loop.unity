@@ -1671,6 +1671,7 @@ MonoBehaviour:
   bedPrefab: {fileID: 9086486792890643581, guid: 29d8bd3bb6d553f4687769e255278ede, type: 3}
   hooverPrefab: {fileID: 4455203720606580540, guid: 9c47b753c10cd74479382d9b2b9633d9, type: 3}
   rugPrefab: {fileID: 2462273500546469364, guid: 3fca25172438f6345acf75cb1407c419, type: 3}
+  objects: []
 --- !u!1 &1972661352
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,8 +1741,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -398.5, y: -247.68}
-  m_SizeDelta: {x: 11.1695, y: 2.5219}
+  m_AnchoredPosition: {x: -376.97406, y: 223}
+  m_SizeDelta: {x: 312.0519, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2058139491
 MonoBehaviour:
@@ -1765,15 +1766,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Phase is:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3892bad2fa4baae4fa94d7586dca6323, type: 2}
-  m_sharedMaterial: {fileID: 7036065265802376300, guid: 3892bad2fa4baae4fa94d7586dca6323, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4285032556
-  m_fontColor: {r: 0.4245283, g: 0.40650588, b: 0.40650588, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1790,8 +1791,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.4
-  m_fontSizeBase: 0.4
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

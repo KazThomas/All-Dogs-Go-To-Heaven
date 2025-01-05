@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
         if (deck.Count >= 1) //if deck is not empty
         {
             Card randCard = deck[Random.Range(0, deck.Count)]; //randomly gives the player a card that is still in the deck
+            //Debug.Log(randCard); what card is being drawn
 
             for (int i = 0; i < avilableSlots.Length; i++)
             {
