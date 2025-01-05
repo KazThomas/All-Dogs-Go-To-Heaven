@@ -39,4 +39,6 @@ public class Card : MonoBehaviour
         gameObject.SetActive(false); //hides the card away
         
     }
+
+    //RAY CAST DETECTION GOES HERE
 }

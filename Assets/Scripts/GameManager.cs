@@ -7,9 +7,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private List<Card> deck = new List<Card>(); //change to stacks
-    [SerializeField] private Stack<Card> Stackdeck = new Stack<Card>();
+    [SerializeField] private List<Card> deck = new List<Card>(); 
+
     public List<Card> discard = new List<Card>();
+
     [SerializeField] private Transform[] cardSlots;
     [SerializeField] private Transform deckLocation;
     [SerializeField] private Transform discardLocation;

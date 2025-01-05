@@ -24,7 +24,6 @@ public class MoveSystem : MonoBehaviour
     {
         state = LevelState.START;
         phaseOrder.text = state.ToString();
-        //grid = GetComponent<GridManager>();
         dog = GameObject.FindGameObjectWithTag("Dog");
         bed = GameObject.FindGameObjectWithTag("Bed");
         fearObjs = GameObject.FindGameObjectsWithTag("Fear");
@@ -63,7 +62,6 @@ public class MoveSystem : MonoBehaviour
                 gm.DrawCard();
             }
 
-           
             float winDist = Vector3.Distance(dog.transform.position, bed.transform.position);
 
             yield return new WaitForSeconds(1f);
